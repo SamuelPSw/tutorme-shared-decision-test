@@ -1,0 +1,48 @@
+# TutorMe API Contract
+
+Base URL: http://localhost:8080/api
+
+## Endpoints
+
+POST /notes
+Create a lesson note.
+
+GET /notes
+Retrieve all lesson notes for the tutor dashboard.
+
+PUT /notes/{id}/approve
+Approve a lesson note.
+
+GET /families/{familyId}/notes
+Retrieve lesson notes for a specific family.
+
+## Create Note Request
+
+{
+    "familyId": 1,
+    "title": "Algebra Lesson",
+    "content": "Reviewed quadratic equations."
+}
+
+## Note Response
+
+{
+    "id": 1,
+    "familyId": 1,
+    "title": "Algebra Lesson",
+    "content": "Reviewed quadratic equations.",
+    "approved": false,
+    "createdAt": "2026-11-25T15:00:00Z"
+}
+
+## Integration Requirements
+
+- All requests and responses use JSON.
+- GET endpoints return arrays of lesson notes.
+- POST returns the created lesson note.
+- PUT returns the updated lesson note.
+- New notes have approved set to false.
+- Allow requests from http://localhost:5173.
+- Family endpoints must only return notes belonging
+  to the requested family.
+- Return HTTP 404 for nonexistent note IDs.
